@@ -9,5 +9,8 @@ mocks:
 unittest:
 	GO111MODULE=on; cd src; go test --cover ./...
 
+lint:
+	cd src; golangci-lint run
+
 run:
 	docker-compose up -d

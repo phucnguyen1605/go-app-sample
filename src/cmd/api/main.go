@@ -38,8 +38,8 @@ func main() {
 		panic("failed to connect database")
 	}
 	// TODO: move to infrastructure db
-	db.AutoMigrate(&entity.User{})
-	db.AutoMigrate(&entity.Task{})
+	_ = db.AutoMigrate(&entity.User{})
+	_ = db.AutoMigrate(&entity.Task{})
 
 	apiDeps := &Dependencies{
 		DB:          db,

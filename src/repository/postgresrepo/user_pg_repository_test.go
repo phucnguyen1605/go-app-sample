@@ -22,7 +22,7 @@ func (s *UserRepoTestSuite) SetupTest() {
 	sqlDB, mockSQL, err := sqlmock.New()
 	s.NoError(err)
 
-	mockDB, err := gorm.Open(postgres.New(postgres.Config{
+	mockDB, _ := gorm.Open(postgres.New(postgres.Config{
 		Conn: sqlDB,
 	}), &gorm.Config{})
 	s.mockSQL = mockSQL

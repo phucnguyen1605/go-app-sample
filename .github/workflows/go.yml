@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  golangci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,10 +19,11 @@ jobs:
         with:
           go-version: 1.18
 
-       - name: golangci-lint
+      - name: golangci-lint
         uses: golangci/golangci-lint-action@v3
         with:
           version: v1.53
+          working-directory: src
 
       - name: Build
         run: cd src; go build -v ./...

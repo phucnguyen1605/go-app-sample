@@ -7,8 +7,6 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-var idLength = 36
-
 type JWTTokenTestSuite struct {
 	suite.Suite
 	jwtToken Token

@@ -74,7 +74,7 @@ func (s *UserServiceTestSuite) TestCreateUser_ShouldReturnServerError() {
 
 	s.userRepository.
 		On("CreateUser", user2).
-		Return(nil, nil)
+		Return(nil, ErrUnexpected)
 
 	userService := NewUserService(s.userRepository, s.token, s.password)
 

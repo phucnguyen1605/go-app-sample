@@ -44,7 +44,7 @@ func (a *AuthMiddleWare) ValidateRequest(next echo.HandlerFunc) echo.HandlerFunc
 
 		// Pass user id to context
 		ctx := context.WithValue(c.Request().Context(), appcontext.UserAuthCtxKey, userID)
-		c.Request().WithContext(ctx)
+		_ = c.Request().WithContext(ctx)
 
 		return next(c)
 	}

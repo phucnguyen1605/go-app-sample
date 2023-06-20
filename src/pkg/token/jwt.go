@@ -17,7 +17,9 @@ func NewJWTToken(key string) Token {
 // Generate generates a access token
 func (j *JWTToken) Generate(payload map[string]interface{}) (string, error) {
 	claims := jwt.MapClaims{}
-	claims = payload
+	for k, v := range payload {
+		claims[k] = v
+	}
 
 	jwtToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	token, err := jwtToken.SignedString([]byte(j.jwtKey))

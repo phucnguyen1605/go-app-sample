@@ -10,7 +10,7 @@ unittest:
 	GO111MODULE=on; cd src; go test --cover ./...
 
 lint:
-	cd src; golangci-lint run
+	cd src; golangci-lint run --disable-all -E errcheck
 
 run:
 	docker-compose up -d

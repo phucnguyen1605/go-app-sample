@@ -9,6 +9,9 @@ mocks:
 unittest:
 	GO111MODULE=on; cd src; go test --cover ./...
 
+build:
+	GO111MODULE=on; cd src; go build -v ./...
+
 lint:
 	cd src; golangci-lint run
 

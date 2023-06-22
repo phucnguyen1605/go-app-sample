@@ -19,7 +19,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./.docker/Dockerfile
+      dockerfile: ./src/Dockerfile
     image: phucnh07/go-app-sample
     ports:
       - "8080:8080"

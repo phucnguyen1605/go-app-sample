@@ -33,4 +33,5 @@ func InitAPIHandler(deps *Dependencies) {
 	taskService := serviceimpl.NewTaskService(userRepository, taskRepository)
 	handler.NewUserHandler(server, userService, idGenerator)
 	handler.NewTaskHandler(server, taskService, idGenerator)
+	handler.NewHealthCheckHandler(server)
 }

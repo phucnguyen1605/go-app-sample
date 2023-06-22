@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 golang:1.18.2-bullseye as builder
+FROM golang:1.18.2-bullseye as builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN cd src/cmd/api; go build -trimpath -ldflags "-w -s" -o /app/app
 
 # ---------------------------------------------------------
 
-FROM --platform=linux/amd64 debian:bullseye-slim as runner
+FROM debian:bullseye-slim as runner
 
 RUN apt-get update
 

@@ -12,7 +12,8 @@ env:
   ECR_REPOSITORY: go-api
   ECS_SERVICE: example-ecs-service
   ECS_CLUSTER: example-ecs-cluster
-  ECS_TASK_DEFINITION: go-api
+  ECS_TASK_DEFINITION_NAME: go-api
+  ECS_TASK_DEFINITION: taskdefinition.json
   CONTAINER_NAME: go-api
 
 jobs:
@@ -49,6 +50,10 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f src/Dockerfile .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION_NAME }} --query taskDefinition > taskdefinition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def

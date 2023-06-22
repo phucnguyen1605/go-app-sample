@@ -14,7 +14,7 @@ env:
   ECS_CLUSTER: example-ecs-cluster
   ECS_TASK_DEFINITION_NAME: go-api
   ECS_TASK_DEFINITION: taskdefinition.json
-  CONTAINER_NAME: go-api
+  CONTAINER_NAME: go-app
 
 jobs:
   deploy:

@@ -53,8 +53,10 @@ func (a *AuthMiddleWare) ValidateRequest(next echo.HandlerFunc) echo.HandlerFunc
 // isSkipAuthMiddleWare is to check if a request is ignored in auth middleware
 func isSkipAuthMiddleWare(r *http.Request) bool {
 	skipList := map[string]bool{
-		"/users":       true,
-		"/users/login": true,
+		"/users":        true,
+		"/users/login":  true,
+		"/health-check": true,
+		"/status":       true,
 	}
 	if _, ok := skipList[r.URL.Path]; ok {
 		return true

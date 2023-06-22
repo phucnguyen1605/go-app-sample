@@ -13,7 +13,7 @@ func NewHealthCheckHandler(echo *echo.Echo,
 ) {
 	handler := &HealthCheckHandler{}
 	echo.GET("/health-check", handler.HealthCheck)
-	// echo.GET("/status", handler.Status)
+	echo.GET("/status", handler.Status)
 }
 
 // CreateTask is method for create task api endpoint
